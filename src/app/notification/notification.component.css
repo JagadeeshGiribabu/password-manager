@@ -7,14 +7,14 @@
     color: white;
     border-radius: 5px;
     width: 300px;
-    z-index: 1000; /* Ensure it appears above other elements */
+    z-index: 1000;
     transition: opacity 0.3s;
 }
 
 .notification.success {
-    background-color: #28a745; /* Green for success */
+    background-color: #28a745;
 }
 
 .notification.error {
-    background-color: #dc3545; /* Red for error */
+    background-color: #dc3545;
 }
