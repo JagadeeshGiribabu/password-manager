@@ -1,26 +1,44 @@
 # PasswordManager
 
-This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 16.1.0.
+## Features
 
-## Development server
+[List passwords]: Display all stored passwords with decrypted passwords shown directly.
+Add password: Interface to securely add a new password with inputs for category, app, username, and password.
+Update password: Edit an existing password.
+Delete password: Remove a password from the list.
+Responsive UI: The interface is clean, user-friendly, and responsive.
 
-Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
+## Prerequisites
 
-## Code scaffolding
+[Node.js] (which includes npm)
+[Angular CLI][You can install it globally using npm install -g @angular/cli]
 
-Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+## Installation
+
+1. Clone the repository:
+
+    `git clone https://github.com/your-repository/password-manager.git`
+    `cd password-manager`
+
+2. Install dependencies:
+
+    `npm install`
+
+3. Configure API URL:
+
+    In `src/environments/environment.ts`, ensure the API URL matches your backend:
+
+## Running the Application
+
+Run `ng serve` Navigate to `http://localhost:4200/ ` in your browser to view the application. The app will automatically reload if you make changes to the code.
 
 ## Build
 
 Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
 
-## Running unit tests
+## Code scaffolding
 
-Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
-
-## Running end-to-end tests
-
-Run `ng e2e` to execute the end-to-end tests via a platform of your choice. To use this command, you need to first add a package that implements end-to-end testing capabilities.
+Run `ng generate component component-name` to generate a new component. You can also use ng generate directive|pipe|service|class|guard|interface|enum|module.
 
 ## Further help
 
