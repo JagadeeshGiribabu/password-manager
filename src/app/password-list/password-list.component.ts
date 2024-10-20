@@ -18,22 +18,33 @@ export class PasswordListComponent implements OnInit {
   }
 
   togglePasswordVisibility(password: Password) {
-    password.show = !password.show; // Toggle the visibility
+    password.show = !password.show;
   }
   
   loadPasswords(): void {
-    this.passwordService.getPasswords().subscribe((data:Password[]) => {
-      this.passwords = data.map(password => ({ ...password, show: false , decriptedPassword: atob(password.encryptedPassword)}));
-    });
+    this.passwordService.getPasswords().subscribe({
+      next: (data: Password[]) => {
+        this.passwords = data.map(password => ({ 
+          ...password, 
+          show: false, 
+          decriptedPassword: atob(password.encryptedPassword) 
+        }));
+      },
+      error: (err) => {
+        this.notificationService.showNotification('Failed to load passwords.', 'error');
+      }
+    });    
   }
 
   deletePassword(id: number): void {
-    this.passwordService.deletePassword(id).subscribe(() => {
-      this.notificationService.showNotification('Password deleted successfully!', 'success');
-      this.loadPasswords();
-    },
-    error => {
-      this.notificationService.showNotification('Failed to delete password.', 'error');
-  });
+    this.passwordService.deletePassword(id).subscribe({
+      next: () => {
+        this.notificationService.showNotification('Password deleted successfully!', 'success');
+        this.loadPasswords();
+      },
+      error: (err) => {
+        this.notificationService.showNotification('Failed to delete password.', 'error');
+      }
+    });    
   }
 }

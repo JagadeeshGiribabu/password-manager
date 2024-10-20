@@ -12,6 +12,7 @@ import { PasswordService } from '../service/password.service';
 })
 export class PasswordUpdateComponent implements OnInit {
   passwordForm: FormGroup;
+  showPassword: boolean = false;
   passwordId: string | null | undefined;
   password$: Observable<Password> | undefined;
 
@@ -34,12 +35,14 @@ export class PasswordUpdateComponent implements OnInit {
     if (this.passwordId) {
       this.passwordService.getPassword(this.passwordId).subscribe(
         (data: Password) => {
-          this.passwordForm.patchValue(data); // Populate the form with existing data
+          this.passwordForm.patchValue(data);
         }
       );
     }
   }
-
+  toggleShowPassword() {
+    this.showPassword = !this.showPassword; // Toggle the showPassword flag
+  }
   onSubmit(): void {
     if (this.passwordId) {
       const updatedPassword: Password = {
@@ -53,7 +56,7 @@ export class PasswordUpdateComponent implements OnInit {
       this.passwordService.updatePassword(updatedPassword).subscribe(
         (response: Password) => {
           console.log('Password updated successfully!', response);
-          this.router.navigate(['/']); // Redirect to password list after update
+          this.router.navigate(['/']);
         }
       );
     }
