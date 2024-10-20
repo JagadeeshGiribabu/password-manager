@@ -16,12 +16,14 @@ export class PasswordAddComponent {
   constructor(private passwordService: PasswordService, private router: Router, private notificationService: NotificationService) {}
 
   addPassword(): void {
-    this.passwordService.addPassword(this.password).subscribe(() => {
-      this.notificationService.showNotification('Password added successfully!', 'success');
-      this.router.navigate(['/']);
-    },
-    error => {
-      this.notificationService.showNotification('Failed to add password.', 'error');
-  });
+    this.passwordService.addPassword(this.password).subscribe({
+      next: () => {
+        this.notificationService.showNotification('Password added successfully!', 'success');
+        this.router.navigate(['/']);
+      },
+      error: (err) => {
+        this.notificationService.showNotification('Failed to add password.', 'error');
+      }
+    });
   }
 }

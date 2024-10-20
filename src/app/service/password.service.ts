@@ -16,7 +16,7 @@ export class PasswordService {
   }
 
   getPassword(id: string): Observable<Password> {
-    return this.http.get<Password>(`${this.apiUrl}/${id}`);
+    return this.http.get<Password>(`${this.apiUrl}/${id}?includeDecrypted=true`);
   }
 
   addPassword(password: Password): Observable<Password> {
